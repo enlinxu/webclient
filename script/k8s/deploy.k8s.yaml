@@ -17,7 +17,7 @@ spec:
       serviceAccount: default
       containers:
         - name: httpclient
-          image: beekman9527/httpclient:v1
+          image: beekman9527/webclient:v1
           imagePullPolicy: IfNotPresent
           args:
             - --v=2

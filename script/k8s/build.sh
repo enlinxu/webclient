@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tag=beekman9527/httpclient:v1
+tag=beekman9527/webclient:v1
 
 make product
 ret=$?
