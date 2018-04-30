@@ -7,6 +7,9 @@ metadata:
     purpose: generate-http-load
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: httpclient
   template:
     metadata:
       annotations:
