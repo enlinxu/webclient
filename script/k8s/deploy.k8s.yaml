@@ -19,11 +19,11 @@ spec:
     spec:
       serviceAccount: default
       containers:
-        - name: httpclient
-          image: beekman9527/webclient:v1
-          imagePullPolicy: IfNotPresent
-          args:
-            - --v=2
-            - --threadNum=10
-            - --target=http://10.3.0.160:8080/cpuwork.php/?cpu=20
-            - --rps=2
+      - name: httpclient
+        image: beekman9527/webclient:v1
+        imagePullPolicy: IfNotPresent
+        args:
+        - --v=3
+        - --threadNum=12
+        - --target=http://music.default:8080/cpuwork.php/?cpu=20
+        - --rps=2

@@ -88,7 +88,15 @@ func run(req *requestConfig) {
 	}
 
 	f := func() {
-		hclient.DoGet()
+		hclient.DoPost()
+	}
+
+	resp, err := hclient.DoPost()
+	if err != nil {
+		glog.Errorf("Error: %v", err)
+		return
+	} else {
+		glog.V(2).Infof("response: %v", resp)
 	}
 
 	pool := NewHttpReqPool(req.threadNum, f)

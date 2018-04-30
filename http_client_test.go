@@ -12,7 +12,7 @@ func TestHttpClient_Get(t *testing.T) {
 		return
 	}
 
-	result, err := client.DoGet()
+	result, err := client.DoPost()
 	if err != nil {
 		t.Errorf("Failed to do http get: %v", err)
 	}
@@ -28,7 +28,7 @@ func TestHttpClient_Get2(t *testing.T) {
 		return
 	}
 
-	result, err := client.DoGet()
+	result, err := client.DoPost()
 	if err != nil {
 		t.Errorf("Failed to do http get: %v", err)
 	}
@@ -44,7 +44,7 @@ func TestHttpClient_Get3(t *testing.T) {
 		return
 	}
 
-	result, err := client.DoGet()
+	result, err := client.DoPost()
 	if err != nil {
 		t.Errorf("Failed to do http get: %v", err)
 	}

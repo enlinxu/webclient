@@ -19,8 +19,7 @@ type HttpClient struct {
 	username string
 	password string
 
-	addr    string
-	reqeust *http.Request
+	addr string
 }
 
 func NewHttpClient(addr string) (*HttpClient, error) {
@@ -65,50 +64,29 @@ func (c *HttpClient) SetUser(username, password string) {
 	c.generateRequest()
 }
 
-func (c *HttpClient) generateRequest() error {
-	req, err := http.NewRequest("Get", c.addr, nil)
+func (c *HttpClient) generateRequest() (*http.Request, error) {
+	req, err := http.NewRequest("POST", c.addr, nil)
 	if err != nil {
 		glog.Errorf("Failed to generate a http.request: %v", err)
-		return err
+		return nil, err
 	}
 
 	if len(c.username) > 0 {
 		req.SetBasicAuth(c.username, c.password)
 	}
 
-	c.reqeust = req
-
-	return nil
+	return req, nil
 }
 
-func (c *HttpClient) DoGet() (string, error) {
-	resp, err := c.client.Do(c.reqeust)
+func (c *HttpClient) DoPost() (string, error) {
+	//1. generate request
+	req, err := c.generateRequest()
 	if err != nil {
-		glog.Errorf("Failed to send http request: %v", err)
-		return "", err
-	}
-	defer resp.Body.Close()
-
-	result, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		glog.Errorf("Failed to read response: %v", err)
+		glog.Errorf("failed to generate http request: %v", err)
 		return "", err
 	}
 
-	return string(result), nil
-}
-
-func (c *HttpClient) DoGet2(addr string) (string, error) {
-	req, err := http.NewRequest("Get", addr, nil)
-	if err != nil {
-		glog.Errorf("Failed to generate a http.request: %v", err)
-		return "", err
-	}
-
-	if len(c.username) > 0 {
-		req.SetBasicAuth(c.username, c.password)
-	}
-
+	//2. send the request
 	resp, err := c.client.Do(req)
 	if err != nil {
 		glog.Errorf("Failed to send http request: %v", err)

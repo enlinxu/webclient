@@ -1,6 +1,6 @@
 FROM alpine:3.3
 
-COPY ./_output/httpClient.linux /bin/httpClient
-RUN chmod +x /bin/httpClient
+COPY ./_output/webclient.linux /bin/webclient
+RUN chmod +x /bin/webclient
 
-ENTRYPOINT ["/bin/httpClient"]
+ENTRYPOINT ["/bin/webclient"]

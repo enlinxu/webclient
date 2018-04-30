@@ -1,7 +1,7 @@
 OUTPUT_DIR=./_output
 SOURCE_DIRS=./
 
-bin=httpClient
+bin=webclient
 product: fmtcheck vet
 	env GOOS=linux GOARCH=amd64 go build -o ${OUTPUT_DIR}/${bin}.linux ./
 
