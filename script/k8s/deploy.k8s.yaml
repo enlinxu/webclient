@@ -25,5 +25,6 @@ spec:
         args:
         - --v=3
         - --threadNum=12
+        - --logtostderr
         - --target=http://music.default:8080/cpuwork.php/?cpu=20
         - --rps=2
