@@ -52,7 +52,6 @@ func NewHttpClient(addr string) (*HttpClient, error) {
 		client: client,
 		addr:   addr,
 	}
-	c.generateRequest()
 
 	return c, nil
 }
@@ -61,7 +60,6 @@ func NewHttpClient(addr string) (*HttpClient, error) {
 func (c *HttpClient) SetUser(username, password string) {
 	c.username = username
 	c.password = password
-	c.generateRequest()
 }
 
 func (c *HttpClient) generateRequest() (*http.Request, error) {
