@@ -11,10 +11,9 @@ A stable http requests generator.
 
 # Deployed in Kubernetes
 Following example yaml file will create two pods, sending POST requests to target:
-   `http://music.default:8080/cpuwork.php/?cpu=20`
-Each Pod will try to send 2 requests per second.
+   `http://music.default:8080/cpuwork.php/?cpu=20` .
 
-   
+In this example, each Pod will try to send 2 requests per second.
    
    
 
