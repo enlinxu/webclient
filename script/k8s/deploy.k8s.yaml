@@ -12,8 +12,6 @@ spec:
       app: httpclient
   template:
     metadata:
-      annotations:
-        kubeturbo.io/monitored: "false"
       labels:
         app: httpclient
     spec:
